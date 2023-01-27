@@ -1,0 +1,151 @@
+header {
+    background-color: #bbbbbb;
+    padding: 20px 0;
+}
+
+.box {
+    position: relative;
+    width: 940px;   /* tamanho padrão na web */
+    margin: 0 auto;
+}
+
+nav {
+    position: absolute;
+    top: 110px;
+    right: 0;
+}
+
+nav li {
+    display: inline;
+    margin-left: 15px;
+}
+
+nav a {
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #7a5c07;
+    text-decoration: underline;
+}
+
+main {
+    width: 940px;
+    margin: 0 auto;
+}
+
+.produtos {
+    padding: 50px 0;
+}
+
+.produtos li {
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    vertical-align: top;
+    margin: 0 1%;
+    padding: 30px 10px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.produtos li:hover {
+    border-color: #7a5c07;
+}
+
+.produtos li:active {
+    border-width: 3px;
+}
+
+.produtos h2 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.produtos li:hover h2 {
+    font-size: 28px;
+}
+
+.produto-descricao {
+    font-size: 18px;
+}
+
+.produto-preco {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    background: url('img/bg.jpg');
+    padding: 40px 0;
+}
+
+.copyright {
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+form {
+    margin: 40px 0;
+}
+
+form label, form legend {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.default-input {
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    width: 50%;
+}
+
+form textarea {
+    min-height: 50px;
+}
+
+.checkbox {
+    margin: 20px 0;
+}
+
+.btn-enviar {
+    width: 20%;
+    padding: 15px 0;
+    background-color: orange;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    transition: 0.5s all;
+    cursor: pointer;
+}
+
+.btn-enviar:hover {
+    background-color: darkorange;
+    transform: scale(1.05);
+}
+
+table {
+    margin: 20px 0 40px;
+}
+
+thead, tfoot {
+    background: #555555;
+    color: white;
+    font-weight: bold;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 8px 15px;
+}

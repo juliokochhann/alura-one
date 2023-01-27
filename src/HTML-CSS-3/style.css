@@ -33,9 +33,12 @@ nav a:hover {
     text-decoration: underline;
 }
 
-.produtos {
+main {
     width: 940px;
     margin: 0 auto;
+}
+
+.produtos {
     padding: 50px 0;
 }
 
@@ -88,4 +91,61 @@ footer {
     color: white;
     font-size: 14px;
     margin-top: 20px;
+}
+
+form {
+    margin: 40px 0;
+}
+
+form label, form legend {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.default-input {
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    width: 50%;
+}
+
+form textarea {
+    min-height: 50px;
+}
+
+.checkbox {
+    margin: 20px 0;
+}
+
+.btn-enviar {
+    width: 20%;
+    padding: 15px 0;
+    background-color: orange;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    transition: 0.5s all;
+    cursor: pointer;
+}
+
+.btn-enviar:hover {
+    background-color: darkorange;
+    transform: scale(1.05);
+}
+
+table {
+    margin: 20px 0 40px;
+}
+
+thead, tfoot {
+    background: #555555;
+    color: white;
+    font-weight: bold;
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 8px 15px;
 }

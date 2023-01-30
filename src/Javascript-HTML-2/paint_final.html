@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Paint</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <!-- <script src='main.js'></script> -->
+</head>
+<body>
+    <canvas width="1000" height="500" style="display: block"></canvas>
+    <br>
+    <button>Clear</button>
+
+    <script>
+        const colors  = ['red', 'green', 'blue'];
+        const palette = [0, 20, 40];
+        const paletteWidth    = 60;
+        const toolbarHeight   = 20;
+        const toolbarWidth    = 1000;
+        const toolbarPosition = 480;
+
+        var c      = document.querySelector('canvas');
+        var ctx    = c.getContext('2d');
+        var button = document.querySelector("button");
+
+        var mouse_click = false;
+        var tint        = colors[0];
+        var toolSize    = 5;
+
+        function drawCircle(x, y, radius, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, 2 * 3.14);
+            ctx.fill();
+        }
+
+        function drawColorRect(x, y, w, h, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, w, h);
+            ctx.fill();
+        }
+
+        function inRange(x, min, max) {
+            return x >= min && x <= max;
+        }
+
+        function mouseMove(event) {
+            var x = event.pageX - c.offsetLeft;
+            var y = event.pageY - c.offsetTop;
+
+            document.body.style.cursor = 'auto';
+
+            if ((inRange(x, 0, paletteWidth) && 
+                inRange(y, toolbarPosition, c.height))) {
+
+                document.body.style.cursor = 'pointer';
+                return;
+            }
+
+            if ((inRange(x, 0, c.width) && 
+                inRange(y, toolbarPosition - toolSize, c.height)) 
+                || !mouse_click) {
+
+                return;
+            }
+
+            drawCircle(x, y, toolSize, tint);
+        }
+
+        function mouseClick(event)  {
+            var x = event.pageX - c.offsetLeft;
+            var y = event.pageY - c.offsetTop;
+
+            palette.forEach(color => {
+                if (inRange(x, color, color + toolbarHeight) &&
+                    inRange(y, toolbarPosition, c.height)) {
+
+                    tint = colors[palette.indexOf(color)];
+                }
+            });
+
+            mouse_click = true;
+
+            mouseMove(event);
+        };
+
+        function restoreToolbar() {
+            var start = 0;
+
+            drawColorRect(start, toolbarPosition, c.width, toolbarHeight, 'black');
+
+            colors.forEach(color => {
+                drawColorRect(start, toolbarPosition, toolbarHeight, toolbarHeight, color);
+                start += toolbarHeight;
+            });
+        }
+
+        function resetCanvas() {
+            ctx.clearRect(0, 0, c.width, c.height);
+            ctx.fillStyle = 'black';
+            ctx.strokeRect(0, 0, c.width, c.height);
+
+            restoreToolbar();
+        }
+
+        resetCanvas();
+
+        button.onclick = resetCanvas;
+
+        c.onmousemove  = mouseMove;
+
+        c.onmousedown  = mouseClick;
+
+        c.onmouseup    = function mouseUp() { mouse_click = false; };
+    </script>
+</body>
+</html>

@@ -1,17 +1,3 @@
-# Ignore any files ending in .o or .a
-*.[oa]
-
-# Ignore all files whose names end with a tilde
-*~
-
-# Ignore paman database files
-*paman_database*
-
-# Ignore all files in these directories
-log/
-tmp/
-sim/
-
 # Ignore Visual Studio Code folder
 .vscode/*
 # Except tasks file
